@@ -1,33 +1,32 @@
-class Scripture
+using System;
+// moroni 10 4-5
+class Program
 {
-    private List<Word> words;
-    private List<string> Moroni  = new List<string> { "Behold", "I", "would", "exhort", "you", "that", "when", "ye", "shall", "read", "these", "things", "if", "it", "be", "wisdom", "in", "God", "that", "ye", "should", "read", "them,", "that", "ye", "would", "remember", "how", "merciful", "the", "Lord", "hath", "been", "unto", "the", "children", "of", "men,", "from", "the", "creation", "of", "Adam", "even", "down", "until", "the", "time", "that", "ye", "shall", "receive", "these", "things,", "and", "ponder", "it", "in", "your", "hearts.", "And", "when", "ye", "shall", "receive", "these", "things,", "I", "would", "exhort", "you", "that", "ye", "would", "ask", "God,", "the", "Eternal", "Father,", "in", "the", "name", "of", "Christ,", "if", "these", "things", "are", "not", "true;", "and", "if", "ye", "shall", "ask", "with", "a", "sincere", "heart,", "with", "real", "intent,", "having", "faith", "in", "Christ,", "he", "will", "manifest", "the", "truth", "of", "it", "unto", "you,", "by", "the", "power", "of", "the", "Holy", "Ghost" };
-
-    public void Hidewords()
+    static void Main(string[] args)
     {
-        var rnd = new Random();
-
-        for(int i = 0; i > 2; i++ )
+        string thereff = "Moroni 10:3-4";
+        Scripture scripture = new Scripture();
+        var counter = 0;
+        scripture.AddWords();
+        var theref = new Reference(thereff);
+        scripture.DisplayScripture(theref);
+        while(true)
         {
-            words[rnd.Next(0, words.Count())].Ishidden(false);
-        }
-    }
+            
+            var userinput = "";
+            Console.WriteLine("Press enter to hide words or exit to exit program");
+            userinput = Console.ReadLine();
+            Console.Clear();
+            scripture.Hidewords();
+            scripture.Hidewords();
 
-    public void AddWords()
-    {
-        foreach(string script in Moroni)
-        {
-            var addingword = new Word(script);
-            words.Add(addingword);
-        }
-    }
+            scripture.DisplayScripture(theref);
+            if (counter == 61)
+            break;
+            else if (userinput == "exit")
+            break;
+            counter ++;
 
-    public void DisplayScripture()
-    {
-        foreach(Word word in words)
-        {
-            Console.WriteLine(word.displaystring());
         }
     }
 }
-// I will have this done by next monday the 19th
