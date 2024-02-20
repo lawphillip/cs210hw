@@ -2,9 +2,13 @@ using System.ComponentModel.DataAnnotations;
 
 class Reference
 {
-   public string Displayrefference(string reference)
+    private string reference;
+    public Reference(string reference)
+    {
+        this.reference = reference;
+    }
+   public string Displayrefference()
     {
         return reference;
     }
 }
-// will be finished by monday the 19th
