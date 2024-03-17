@@ -25,3 +25,4 @@ class Simple : Goal
 
 
 }
+//i will have this code finished by 3/19/2024
