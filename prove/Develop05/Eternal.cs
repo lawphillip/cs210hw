@@ -4,5 +4,8 @@ class Eternal : Goal
     {
         
     }
+    public Eternal(string values) : base(values)
+    {
+        
+    }
 }
-//i will have the coe finished by 3/19/2024
