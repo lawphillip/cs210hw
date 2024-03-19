@@ -3,7 +3,57 @@ using System.Runtime.CompilerServices;
 
 class Program
 {
-    static List<Goal> goals;
+    static void Writegoalfile(string nameoffile, List<Goal> goallist)
+    {
+        var data = "";
+        data += $"{pointtotal}\n";
+        foreach(Goal hgoal in goallist)
+        {
+            var typeString = "";
+            if (hgoal is Simple)
+            {
+                typeString = "S:";
+            }
+            else if (hgoal is Eternal)
+            {
+                typeString = "E:";
+            }
+            else if(hgoal is Checklist)
+            {
+                typeString = "C:";
+            }
+
+            data += typeString + hgoal.export() + "\n";
+        }
+        using (StreamWriter outputFile = new StreamWriter(nameoffile))
+        {
+            outputFile.Write(data);
+        }
+    }
+    static List<Goal> readGoalFile(string nameoffile)
+    {
+        var goalie = new List<Goal>();
+        string[] lines = System.IO.File.ReadAllLines(nameoffile);
+        pointtotal += int.Parse(lines[0]);
+        foreach(string line in lines.Skip(1))
+        {
+            var typeString = line[0..2];
+            if (typeString == "S:")
+            {
+                goalie.Add(new Simple(line[2..]));
+            }
+            else if (typeString == "E:")
+            {
+                goalie.Add(new Eternal(line[2..]));
+            }
+            else if (typeString == "C:")
+            {
+                goalie.Add(new Checklist(line[2..]));
+            }
+        }
+        return goalie;
+    }
+    static List<Goal> goals = new List<Goal>();
     static int pointtotal;
     
     static string getname()
@@ -36,6 +86,12 @@ class Program
         int reward = int.Parse(Console.ReadLine());
         return reward;
     }
+    static string getfilename()
+    {
+        Console.WriteLine("What is the filename for the goal file?: ");
+        string file = Console.ReadLine();
+        return file;
+    }
 
 
     static void Main(string[] args)
@@ -44,6 +100,7 @@ class Program
         var menu = 0;
         var i = 0;
         while(menu != 6){
+        Console.WriteLine($"You have {pointtotal} points\n");
          Console.WriteLine("Menu Options:\n1. Create new goal\n 2. List Goals\n 3. Save Goals\n 4. Load goals \n 5. Record event \n 6. Quit");
             menu = int.Parse(Console.ReadLine());
             switch (menu)
@@ -60,7 +117,7 @@ class Program
                     goals.Add(new Eternal(getname(),getdes(),getreward()));
                     break;
                     case 3:
-                    goals.Add(new Checklist(getname(),getdes(), getreward(), getgoalcount(), getbonusgoal()));
+                    goals.Add(new Checklist(getname(),getdes(), getreward(), getbonusgoal(), getgoalcount()));
                     break;
                     default:
                     Console.WriteLine("That is not an option");
@@ -69,30 +126,35 @@ class Program
                 
                 break;
                 case 2:
+                int bug0 = 1;
+                Console.WriteLine("Your goals are:");
                 foreach (Goal goal in goals){
+                    Console.Write($"{bug0++}. ");
                     goal.Display();
                 }
 
                 break;
 
                 case 3:
-                foreach(Goal goal in goals)
-                {
-                    
-                }
+                Writegoalfile(getfilename(), goals);
+                
                 break;
 
                 case 4:
-
+                goals = readGoalFile(getfilename());
                 break;
                 case 5:
+                    int bug = 0;
+                    Console.WriteLine("Your goals are:");
                     foreach( Goal goal in goals)
                     {
+                        bug++;
+                        Console.Write($"{bug}. ");
                         goal.Display();
                     }
                     Console.WriteLine("");
                     int j = int.Parse(Console.ReadLine());
-                    pointtotal += goals[j].Awardpoint();
+                    pointtotal += goals[j-1].Awardpoint();
                 break;
                 case 6:
                 break;
@@ -104,4 +166,3 @@ class Program
         }
     }
 }
-// i will have this code finished by 3/19/2024
