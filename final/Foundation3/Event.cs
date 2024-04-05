@@ -8,7 +8,7 @@ class Event
 
     public string displayStandard()
     {
-        return "";
+        return $"Title: {title}\nDescription: {description}\nDate: {date}\nTime: {time}\nAddress:\n" + address.getaddress();
     }
     public Event(string title, string description, string date, string time, Address address)
     {
@@ -17,5 +17,9 @@ class Event
         this.date = date;
         this.time = time;
         this.address = address;
+    }
+    public string shorter()
+    {
+        return $"Title: {title}\nDate: {date}";
     }
 }

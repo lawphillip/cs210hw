@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "pAasJGOZkUdUd6l9+kpRaC8y/MDAZjcnpqITs3X7DPJy4BLWDJh3mpjfkGF313Ij+xQCROT3mFl/Gg90I89WWQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\meist\\Documents\\cs210\\cs210hw\\final\\Foundation3\\Foundation3.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\meist\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.14\\microsoft.netcore.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\meist\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.14\\microsoft.windowsdesktop.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\meist\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.14\\microsoft.aspnetcore.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\meist\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.14\\microsoft.netcore.app.host.win-x64.7.0.14.nupkg.sha512"
+  ],
+  "logs": []
+}

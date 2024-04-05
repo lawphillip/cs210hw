@@ -13,7 +13,7 @@ class Address
     }
     public string getaddress()
     {
-        return $"{streetaddress}\n{city},{state}\n{country}";
+        return $"{streetaddress}\n{city}, {state}\n{country}";
     }
 
 }
